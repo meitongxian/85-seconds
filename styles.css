@@ -1,0 +1,177 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --background: #E7E7E7;
+    --text-primary: #080808;
+    --clock-frame-diameter: 600px;
+    --clock-frame-border: 40px;
+    --clock-dot-diameter: 45px;
+    --hands-width: 35px;
+    --hour-hand-height: 120px;
+    --minute-hand-height: 160px;
+}
+
+@font-face {
+    font-family: "Voyager";
+    src: url('Voyager-Regular.otf') format('opentype');
+}
+
+body {
+    background-color: var(--background);
+}
+
+a {
+    color: var(--background);
+    text-decoration: none;
+    opacity: 50%;
+}
+
+a:hover {
+    opacity: 100%;
+}
+
+.serif {
+    font-family: "Voyager", "Times New Roman", serif;
+}
+
+.sans {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.mono {
+    font-family: "Fragment Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    color: var(--background);
+    font-weight: 400;
+    font-size: 80px;
+    opacity: 50%;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: var(--background);
+    opacity: 50%;
+    width: 600px;
+    max-width: 90%;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.center {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* fallback if no custom properties support */
+    height: calc(var(--vh, 1vh) * 100);
+}
+
+.clock-frame {
+    width: var(--clock-frame-diameter);
+    height: var(--clock-frame-diameter);
+    border: var(--clock-frame-border) solid var(--text-primary);
+    border-radius: 50%;
+}
+
+.clock-dot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: var(--clock-dot-diameter);
+    height: var(--clock-dot-diameter);
+    background-color: var(--text-primary);
+    border-radius: 50%;
+}
+
+.clock-face {
+    position: absolute; 
+    width: 0;
+    height: 0;
+}
+
+.hour-hand, .minute-hand {
+    position: absolute; 
+    width: var(--hands-width);
+    background-color: var(--text-primary);
+    bottom: 50vh; /* fallback if no custom properties support */
+    bottom: calc(var(--vh, 1vh) * 50);
+    transform-origin: bottom;
+}
+
+.hour-hand {
+    height: var(--hour-hand-height);
+    animation: 85s linear hour-hand-angle;
+}
+
+.minute-hand {
+    height: var(--minute-hand-height);
+    animation: 85s linear minute-hand-angle;
+}
+
+@keyframes hour-hand-angle {
+  from {
+    transform: rotate(-0.7deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes minute-hand-angle {
+  from {
+    transform: rotate(-8.5deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+    
+.overlay {
+    background: var(--text-primary);
+    width: 100%;
+    height: 100vh; /* fallback if no custom properties support */
+    height: calc(var(--vh, 1vh) * 100);
+    display: none;
+}
+
+
+@media(max-width: 960px) {
+
+    h1 {
+        font-size: 60px;
+    }
+
+    .clock-frame {
+        width: calc(0.6*var(--clock-frame-diameter));
+        height: calc(0.6*var(--clock-frame-diameter));
+        border: calc(0.6*var(--clock-frame-border)) solid var(--text-primary);
+    } 
+
+    .clock-dot {
+        width: calc(0.6*var(--clock-dot-diameter));
+        height: calc(0.6*var(--clock-dot-diameter));
+    }
+
+    .hour-hand {
+        width: calc(0.6*var(--hands-width));
+        height: calc(0.6*var(--hour-hand-height));
+    }
+
+    .minute-hand {
+        width: calc(0.6*var(--hands-width));
+        height: calc(0.6*var(--minute-hand-height));
+    }
+
+}
