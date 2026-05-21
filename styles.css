@@ -112,12 +112,20 @@ p {
 }
 
 .hour-hand {
+    transform: rotate(-0.7deg);
     height: var(--hour-hand-height);
+}
+
+.hour-hand-animation {
     animation: 85s linear hour-hand-angle;
 }
 
 .minute-hand {
+    transform: rotate(-8.5deg);
     height: var(--minute-hand-height);
+}
+
+.minute-hand-animation {
     animation: 85s linear minute-hand-angle;
 }
 

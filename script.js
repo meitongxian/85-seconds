@@ -50,8 +50,19 @@ window.addEventListener('resize', () => {
 // timer for overlay
 
 let overlay = document.querySelector('.overlay');
+let hourHand = document.querySelector('.hour-hand');
+let minuteHand = document.querySelector('.minute-hand');
+let timerSound = document.getElementById('timerSound');
 
-setTimeout(() => {
-    overlay.style.display = "block";
-}, 85000);
+document.addEventListener("click", () => {
+    console.log("clicked start");
+    
+    timerSound.play();
 
+    hourHand.classList.add("hour-hand-animation");
+    minuteHand.classList.add("minute-hand-animation");
+
+    setTimeout(() => {
+        overlay.style.display = "block";
+    }, 85000);
+});
